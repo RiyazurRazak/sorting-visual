@@ -7,6 +7,7 @@
           <button class="button" :class="{active : sortMethod === 'Bubble'}" @click="sortMethod='Bubble'">Bubble Sort</button>
           <button class="button" :class="{active : sortMethod === 'Selection'}" @click="sortMethod='Selection'" >Selection Sort</button>
           <button class="button" :class="{active : sortMethod === 'Insertion'}" @click="sortMethod='Insertion'">Insertion Sort</button>
+           <button class="button" :class="{active : sortMethod === 'Merge'}" @click="sortMethod='Merge'">Merge Sort</button>
        </el-button-group>
     </div>
     <p>Created By <a href="http://riyazurrazak.com/">Riyazur Razak</a></p>
@@ -21,6 +22,7 @@
   import {bubbleSort} from '../../lib/sortings/BubbleSort.js'
   import {selectionSort} from '../../lib/sortings/SelectionSort.js'
   import {insertionSort} from '../../lib/sortings/InsertionSort.js'
+  import {mergeSort} from '../../lib/sortings/MergeSort.js'
 
 
 export default {
@@ -76,6 +78,9 @@ export default {
               case "Insertion":
                   this.emitter.emit("sorted-data", insertionSort(this.array))  
                  break;
+              case "Merge" :
+                    this.emitter.emit("sorted-data", mergeSort(this.array))    
+                    break;
               default:
                   break;
           }

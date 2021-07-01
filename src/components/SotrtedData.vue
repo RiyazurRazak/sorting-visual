@@ -3,6 +3,7 @@
       <h1>{{sortType}}</h1> 
       <h3 class="test-array">Array To Be Sorted: {{initialArray}}</h3>
       <br />
+      <div v-if="sortType !='Merge Sort'">
        <el-collapse  v-for="(data,index) in sortedData" :key="index" > 
           <el-collapse-item :title="`Iteration ${parseInt(index)+1}`" name="1">
             <h3>Results  : {{data.sorted}}</h3>
@@ -11,6 +12,23 @@
             </ul>
          </el-collapse-item>
       </el-collapse>
+      </div>
+     <div v-else>
+          <p class="note">Note * In Divide Method First It separates the left array and after finish, it separate right side </p>
+         <h3> Sorted Data : {{sortedData.sorted}}</h3>
+         <div>
+           <div style="display: flex">
+               <div style="margin-right: 40px">
+                   <p class="bold">left : {{sortedData[0].left}}</p>
+                  <p v-for="index in Math.floor((Object.keys(sortedData).length-2)/2)" :key="index">left : {{sortedData[index].left}} | right : {{sortedData[index].right}}</p>
+               </div>
+               <div>
+                   <p class="bold">right : {{sortedData[0].right}}</p>
+                  <p v-for="index in Math.floor((Object.keys(sortedData).length-2)/2)" :key="index"> left : {{sortedData[index + Math.floor((Object.keys(sortedData).length-2)/2)].left}} | right : {{sortedData[index + Math.floor((Object.keys(sortedData).length-2)/2)].right}} </p>
+               </div>
+           </div>
+        </div>
+     </div>
 
    </div>    
 </template>
@@ -47,6 +65,13 @@ h1{
 .inner-array{
     font-weight: 600;
     color: #52006A;
+}
+.note{
+    color: red;
+    margin-top: 0;
+}
+.bold{
+    font-weight: 600;
 }
 @media screen and (max-width: 835px) {
     .root{
