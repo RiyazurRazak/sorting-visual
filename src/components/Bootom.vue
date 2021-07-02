@@ -67,7 +67,6 @@ export default {
       },
       sortHandller(sortMethod){
           this.emitter.emit('sort-method', sortMethod+" Sort")
-          console.log("emmit")
           switch (sortMethod) {
               case "Bubble":
                  this.emitter.emit("sorted-data", bubbleSort(this.array))

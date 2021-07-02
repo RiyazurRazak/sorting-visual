@@ -8,5 +8,6 @@ const emitter = mitt()
 
 const app = createApp(App)
 app.config.globalProperties.emitter = emitter;
+app.config.devtools = true;
 app.use(ElementPlus)
 app.mount('#app')
